@@ -54,6 +54,24 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="country" name="country" class="custom-select @error('country') is-invalid @enderror">
+                                    @foreach($countries as $country)
+                                        <option value="{{ $country->id }}" @if($country->id === old('country')) selected @endif>{{ $country->name }}</option>
+                                    @endforeach
+                                </select>
+
+                                @error('country')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
