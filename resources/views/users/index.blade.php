@@ -39,7 +39,7 @@
                                     @error('filter.last_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
-                                    </span>
+                                    </span>c
                                     @enderror
                                 </div>
 
@@ -74,14 +74,20 @@
                 </div>
                 <hr>
                 <div class="card">
-                    <div class="card-header">Users</div>
+                    <div class="card-header">
+                        <h5>Users</h5>
+                        <a href="{{ route('users.create') }}" class="btn btn-success">{{ __('Create') }}</a>
+                    </div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
+                                <th scope="col">{{__('First Name')}}</th>
+                                <th scope="col">{{__('Last Name')}}</th>
+                                <th scope="col">{{__('Email')}}</th>
+                                <th scope="col">{{ __('Country') }}</th>
+                                <th scope="col">{{__('Created by')}}</th>
+                                <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -91,6 +97,13 @@
                                     <td>{{ $user->first_name }}</td>
                                     <td>{{ $user->last_name }}</td>
                                     <td>{{ $user->email }}</td>
+                                    <td>{{ $user->country->name }}</td>
+                                    <td>{{ $user->author->first_name }}</td>
+                                    <td class="text-right">
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="{{ route('users.edit', $user) }}" class="btn btn-link">{{ __('Edit') }}</a>
+                                        </div>
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
