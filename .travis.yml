@@ -1,0 +1,21 @@
+dist: bionic
+language: php
+php:
+  - 7.4
+
+service:
+  - mysql
+
+cache:
+  directories:
+    - node_modules
+    - vendor
+
+before_script:
+  - cp .env.travis .env
+  - sudo mysql -e 'CREATE DATABASE workshop-laravel-test;'
+  - composer self-update
+  - composer install --no-interaction
+
+script:
+  - vendor/bin/phpunit
