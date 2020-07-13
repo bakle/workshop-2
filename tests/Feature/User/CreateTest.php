@@ -32,7 +32,7 @@ class CreateTest extends TestCase
 
         $response->assertOk();
         $response->assertViewIs('users.create');
-        $response->assertSeeText('Register');
+        $response->assertSeeText('Create User');
         $response->assertSeeText('First Name');
         $response->assertSeeText('Last Name');
         $response->assertSeeText('Email');
